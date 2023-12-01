@@ -1,0 +1,498 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Borang Aduan Pelanggan</title>
+
+    <style>
+        @media print {
+            #printPageButton {
+                display: none;
+            }
+        }
+        
+        /* CSS */
+        .button-60 {
+            align-items: center;
+            appearance: none;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: .375em;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #363636;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 1rem;
+            height: 2.5em;
+            justify-content: center;
+            line-height: 1.5;
+            padding: calc(.5em - 1px) 1em;
+            position: relative;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: top;
+            white-space: nowrap;
+        }
+
+      * {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+            box-sizing: border-box;
+            font-size: 24px;
+            font-weight: normal;
+        }   
+
+        /*for image*/
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+            margin-top:10px ;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            width: 100% !important;
+            height: 100%;
+            line-height: 1.6;
+        }
+
+        /* Let's make sure all tables have defaults */
+        table td {
+            vertical-align: top;
+        }
+
+        /* -------------------------------------
+            BODY & CONTAINER
+        ------------------------------------- */
+        body {
+            background-color: #f6f6f6;
+        }
+
+        .body-wrap {
+            background-color: #f6f6f6;
+            width: 100%;
+            height: 100%
+        }
+
+        .container {
+            display: block !important;
+            max-width: 1240px !important;
+            margin: 0 auto !important;
+            /* makes it centered */
+            clear: both !important;
+        }
+
+        .content {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: block;
+            padding: 0px;
+        }
+
+        /* -------------------------------------
+            HEADER, FOOTER, MAIN
+        ------------------------------------- */
+        .main {
+            background: #fff;
+            position: relative;
+        }
+
+        .content-wrap {
+            padding: 20px;
+        }
+
+        .content-block {
+            padding: 0 0 20px;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+
+        .header {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #title {
+          font-size: 24px;
+          text-decoration: underline;
+          margin-bottom: 2px;
+        }
+
+        #underHeader {
+          font-size: 20px;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+
+        /* Style for LAMPIRAN 1 container */
+        #lampiranContainer {
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 7px;
+            margin-top: 10px;
+            border: 1px solid #000; /* Add your desired border properties here */
+            max-width: 170px; /* Adjust the maximum width as needed */
+            box-sizing: border-box; /* Include padding and border in the element's total width */
+            overflow: hidden; /* Prevent text overflow */
+        }
+
+        /* Style for the text inside LAMPIRAN 1 container */
+        #lampiranContainer::after {
+            display: inline-block; /* Display as inline-block to respect the max-width */
+            position: relative;
+            z-index: 1;
+            margin-top: -1.5em; /* Adjust the margin to position the text inside the border */
+            padding: 0 10px; /* Add padding to the text if needed */
+            white-space: nowrap; /* Prevent the text from wrapping */
+        }
+
+        
+        .footer a {
+            color: #999;
+        }
+        .footer p, .footer a, .footer unsubscribe, .footer td {
+            font-size: 12px;
+        }
+
+        /* -------------------------------------
+            TYPOGRAPHY
+        ------------------------------------- */
+         h2{
+            font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            color: #000;
+            margin: 40px 0 0;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+
+        h2 {
+            font-size: 45px;
+            font-weight: 600;
+        }
+
+        p, ul, ol {
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        p li, ul li, ol li {
+            margin-left: 5px;
+            list-style-position: inside;
+        }
+
+        /* -------------------------------------
+            LINKS & BUTTONS
+        ------------------------------------- */
+        a {
+            color: #1ab394;
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            text-decoration: none;
+            color: #FFF;
+            background-color: #1ab394;
+            border: solid #1ab394;
+            border-width: 5px 10px;
+            line-height: 2;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            border-radius: 5px;
+            text-transform: capitalize;
+        }
+
+        /* -------------------------------------
+            OTHER STYLES THAT MIGHT BE USEFUL
+        ------------------------------------- */
+        .last {
+            margin-bottom: 0;
+        }
+
+        .first {
+            margin-top: 0;
+        }
+
+        .aligncenter {
+            text-align: center;
+        }
+
+        .alignright {
+            text-align: right;
+        }
+
+        .alignleft {
+            text-align: left;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        
+
+        /* -------------------------------------
+            INVOICE
+            Styles for the billing table
+        ------------------------------------- */
+        .invoice {
+            margin: 40px auto;
+            text-align: left;
+            width: 100%;
+            margin-top:5px ;
+            
+        }
+        .invoice td {
+            padding: 5px 0;
+        }
+        .invoice .invoice-items {
+            width: 100%;
+        }
+        .invoice .invoice-items td {
+            border-top: #eee 1px solid;
+        }
+        .invoice .invoice-items .total td {
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            font-weight: 700;
+        }
+
+        .invoice br{
+            position: absolute;
+            left: 3px;
+        }
+        
+        td {
+           padding: 5px;
+        }
+
+        .flex-container{
+            margin: 40px auto;
+            text-align: left;
+            width: 100%;
+            margin-top:5px ;
+           
+        }
+
+        .flex-container1 {
+            display: flex;
+            justify-content: space-between; /* Adjust as needed for spacing */
+            align-items: center; /* Align items vertically in the center */
+        }
+        
+        
+        /*Format table*/
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .tg td, .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            font-weight: normal;
+        }
+
+        .tg .tg-0pky {
+            border-color: inherit;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tg .tg-lboi {
+            text-align: left;
+        }
+
+        .content-wrap {
+            padding: 20px;
+            margin-bottom: 100px; /* Increase the margin to accommodate the footer table */
+        }
+
+        /*for horizontal line*/
+        .long-separator {
+            border: none;
+            height: 2px;
+            background-color: black;
+            margin: 0 auto; /* Center the hr */
+            width: 100%; /* Set the width to match the table width */
+        }
+
+        .label-container {
+            border: 1px solid #000;
+            padding: 5px;
+            width: 150px;
+            height: 60px;
+        }
+
+        .tandatangan-box {
+            display: flex;
+            align-items: center; /* Align items vertically in the center */
+        }
+
+        .label-box {
+            border: 1px solid #000;
+            width: 150px; /* Adjust width as needed */
+            height: 60px; /* Adjust height as needed */
+            margin-left: 10px; /* Adjust margin as needed for separation */
+        }
+        </style>
+
+        </head>
+        <body>
+
+
+    <!-- <%
+        String customerName = null;        
+        String customerEmail = null;
+        String customerID = null;
+        String customerPhoneNumber = null;
+        String buildingNo = null;
+        String dateComplaint = null;
+        String detailsComplaint = null;
+        String sourceComplaint = null;
+        Date date = null;
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        int total = 1;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+                            con = MySQL.getConnection();
+            String sql = "SELECT * FROM form WHERE customerID = \"" + customerID + "\" ";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                customerName = rs.getString("customerName");                
+                customerEmail = rs.getString("customerEmail");
+                customerID = rs.getString("customerID");
+                customerPhoneNumber = rs.getString("customerPhoneNumber");
+                buildingNo = rs.getString("buildingNo");              
+                detailsComplaint = rs.getString("detailsComplaint");
+                sourceComplaint = rs.getString("sourceComplaint");        
+                dateComplaint = rs.getString("dateComplaint");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    %> -->
+
+    <div class = "body wrap">
+        <div class="container" style="width: 1100px;" height="1754px;">
+            <div class="content">
+                <div class="main">
+                    <div class="content-wrap aligncenter" >
+                        <div class="content-block">
+                            <img src="../images/JATA NEGARA.jpg" width="80%" height="140" alt="alt" />
+                            <div id="underHeader" class="underHeader" style="text-align: center;">JABATAN TENAGA MANUSIA</div>
+                            <span id="title" class="title">BORANG ADUAN PELANGGAN</span>
+                            <div id="lampiranContainer" class="flex-container">
+                                <span class="label">LAMPIRAN 1</span>
+                            </div>
+
+                            <div class="flex-container">
+                                <div class="invoice">                               
+                                    <br /><span class="label">NAMA PELANGGAN    :</span> 
+                                    <br /><span class="label">NO.PENDAFTARAN/KP :</span> 
+                                    <br /><span class="label">NO.TELEFON        :</span> 
+                                    <br /><span class="label">ALAMAT E-MEL      :</span> 
+                                    <br /><span class="label">ALAMAT            :</span>                                    
+                                </div>
+                                
+
+                                <br/><span class="label">BUTIRAN ADUAN  :</span>
+                                
+                                <br/><br/><br/><br/><span class="label">SUMBER ADUAN  :</span>
+                                
+
+                                <br/><br/><br/><br/>
+                                <div class="flex-container1">
+                                        <span class="label"> Tarikh:</span>
+                                    <div class="tandatangan-box">
+                                        <span class="label"> Tandatangan:</span>
+                                        <div class="label-box"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-container" style="text-align: center;">
+                                    <br/>
+                                    <hr>
+                                    <span class="label">UNTUK KEGUNAAN PEJABAT</span>
+                                    <hr>
+                                </div>
+
+                                
+                                <table class="tg">
+                                    <colgroup>
+                                    <col style="width: 20%">
+                                    <col style="width: 25%">
+                                    <col style="width: 15%">
+                                    <col style="width: 20%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="tg-lboi" rowspan="3">Cop Tarikh Terima Aduan:</th>
+                                        <th class="tg-0pky" rowspan="3"></th>
+                                        <th class="tg-0pky">Tandatangan Penerima:</th>
+                                        <th class="tg-0pky"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="tg-0pky">Nama Penerima :</th>
+                                        <th class="tg-0pky"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="tg-0pky">Jawatan Penerima :</th>
+                                        <th class="tg-0pky"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="tg-0pky">No. Rujukan Aduan :</td>
+                                        <td class="tg-0pky" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0pky">Status/Tindakan Aduan :</td>
+                                        <td class="tg-0pky" colspan="3"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                                                                                                                     
+                            <button id="printPageButton" class="button-60" onclick="window.print()">Print Receipt</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>
