@@ -135,6 +135,38 @@ public class AdminController extends HttpServlet{
         }
     }
     
+    private void saveAdmin(HttpServletRequest request, HttpServletResponse resp) 
+            throws SQLException, ServletException, IOException, ClassNotFoundException{
+        
+        //get all data from signup        
+        String fullname = request.getParameter("fullname");
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String phoneNo = request.getParameter("phoneNo");
+        String password = request.getParameter("password");
+        String Repassword = request.getParameter("Repassword");
+        String adminID = request.getParameter("adminID");
+        
+        //keep data into javabeans
+        Admin updateadmin = new Admin();
+        
+        updateadmin.setFullName(fullname);
+        updateadmin.setUsername(username);
+        updateadmin.setEmail(email);
+        updateadmin.setPhoneNo(phoneNo);
+        updateadmin.setPassword(password);
+        updateadmin.setRepassword(Repassword);
+        updateadmin.setAdminID(adminID);
+        
+        //pass the bean to DAO
+        AdminDao admin = new AdminDao();
+        admin.save(updateadmin);
+        
+        //save the bean as attribute and pass to view
+        request.setAttribute("admin", updateadmin);
+        resp.sendRedirect("login.jsp");
+    }
+    
     //register part
     private void registerAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         Connection connection = MySQL.getConnection();
@@ -225,39 +257,42 @@ public class AdminController extends HttpServlet{
     
     //update part
     private void update(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
-    PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
+        
+        String adminID = request.getParameter("adminID");
+        String fullName = request.getParameter("fullName");
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String phoneNo = request.getParameter("phoneNo");
+        String password = request.getParameter("password");
+        String Repassword = request.getParameter("Repassword");
+               
+        Admin admin = new Admin();
+        Admin admin1 = new Admin(fullName, username, email, phoneNo, password, Repassword, adminID);
+        
+        admin.setFullName(fullName);
+        admin.setUsername(username);
+        admin.setEmail(email);
+        admin.setPhoneNo(phoneNo);
+        //client.setClientPhoneNumber(clientPassword);
+        admin.setPassword(password);
+        admin.setRepassword(Repassword);
+        admin.setAdminID(adminID);
+                        
+        int result = AdminDao.update(admin1);
 
-    String adminID = request.getParameter("adminID");
-    String fullName = request.getParameter("fullName");
-    String username = request.getParameter("username");
-    String email = request.getParameter("email");
-    String phoneNo = request.getParameter("phoneNo");
-    String password = request.getParameter("password");
-
-    Admin admin = new Admin(adminID, fullName, username, email, phoneNo, password);
-
-    int result = AdminDao.update(admin);
-
-    if (result > 0) {
-        // Invalidate the user's session
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
+        if (result > 0) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert (\"Berjaya mengemaskini maklumat!\")");
+            out.println("window.location.href = './Admin/Profile.jsp';");
+            out.println("</script>");
+        } else {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert (\"Gagal mengemaskini maklumat\")");
+            out.print("location=history.back()");
+            out.println("</script>");
         }
-
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert (\"Berjaya mengemaskini maklumat!\")");
-        out.println("window.location.href = './Admin/Profile.jsp';");
-        out.println("</script>");
-    } else {
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert (\"Gagal mengemaskini maklumat\")");
-        out.println("window.location.href = './Admin/Profile.jsp';");
-        out.println("</script>");
     }
-}
-
-    
     
     //part delete
     private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {

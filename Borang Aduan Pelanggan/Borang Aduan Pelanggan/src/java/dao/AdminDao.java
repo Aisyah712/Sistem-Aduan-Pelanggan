@@ -73,6 +73,30 @@ public class AdminDao {
         return result;
     }
     
+    public void save(Admin admin) throws SQLException{
+        try {
+            String mySQLQuery = "insert into admin(fullname, username, email, "
+                    + "phoneNo, password, Repassword, adminID) values(?, ?, ?, ?, ?, ?, ?)";
+            
+            PreparedStatement myPS = con.prepareStatement(mySQLQuery);
+            
+            myPS.setString(1, admin.getFullName());
+            myPS.setString(2, admin.getUsername());
+            myPS.setString(3, admin.getEmail());
+            myPS.setString(4, admin.getPhoneNo());
+            myPS.setString(5, admin.getPassword());
+            myPS.setString(6, admin.getRepassword());
+            myPS.setString(7, admin.getAdminID());
+            myPS.executeUpdate();
+            
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+            
+        } finally {
+            con.close();
+        }
+    }
+    
     //update acc admin
     public static int update(Admin admin) throws SQLException {
         int result = 0;
